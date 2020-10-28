@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>Courses</h1>
+
+    <a class="btn btn-outline-success btn-sm" [routerLink]="[ '/course-save' ]">New</a>
+    <br>
+
+    <table class="table table-bordered">
+        <tr>
+            <td><strong>ID</strong></td>
+            <td><strong>Title</strong></td>
+            <td><strong>Credits</strong></td>
+            <td></td>
+        </tr>
+        <tr *ngFor="let item of courses">
+            <td>{{ item.CourseId }}</td>
+            <td>{{ item.Title }}</td>
+            <td>{{ item.Credits }}</td>
+            <td>
+                <div class="btn-group" role="group">
+                <a class="btn btn-sm btn-outline-warning" [routerLink]="[ '/course-edit', item.CourseId ]">Edit</a>
+                <a class="btn btn-sm btn-outline-danger" [routerLink]="[ '/course-delete', item.CourseId ]">Delete</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

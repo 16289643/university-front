@@ -1,0 +1,51 @@
+<div class="container">
+    <h2>Edit Department</h2>
+    
+    <div class="form-row" *ngIf="showMsg">
+        <div class="alert alert-{{type}} col-md-12" role="alert">
+          {{msg}}
+        </div>
+      </div>      
+
+    <form #departmentForm="ngForm" *ngIf="department">
+
+        <div class="form-row">
+            <div class="col-md-4">
+                <strong><label>DepartmentID</label></strong>
+                <input type="number" id="DepartmentID" name="DepartmentID" placeholder="Enter the Department ID" 
+                class="form-control" [(ngModel)]="department.DepartmentID" />
+            </div>
+            <div class="col-md-4">
+                <strong><label>Name</label></strong>
+                <input type="text" id="Name" name="Name" placeholder="Enter the Name" 
+                class="form-control" [(ngModel)]="department.Name" />
+            </div>
+            <div class="col-md-4">
+                <strong><label>Budget</label></strong>
+                <input type="number" id="Budget" name="Budget" placeholder="Enter the Budget" 
+                class="form-control" [(ngModel)]="department.Budget" />
+            </div>    
+        <div class="col-md-4">
+            <strong><label>StartDate</label></strong>
+            <input type="date" id="StartDate" name="StartDate" placeholder="Enter the StartDate" 
+            class="form-control" [(ngModel)]="department.StartDate" />
+        </div>
+        <div class="col-md-4">
+            <strong><label>InstructorID</label></strong>
+            <!-- <input type="number" id="InstructorID" name="InstructorID" placeholder="Enter the InstructorID" 
+            class="form-control" [(ngModel)]="department.InstructorID" /> -->
+
+            <select class="form-control" id="InstructorID" name="InstructorID"  [(ngModel)]="department.InstructorID">
+                <option *ngFor="let item of instructor" [value]="item.ID">{{item.LastName}} {{item.FirstMidName}}</option>
+            </select>
+        </div>
+    </div>
+    
+        <br>
+        <div class="btn-group" role="group">
+            <button class="btn btn-outline-primary btn-sm" (click)="edit()">Edit</button>
+            <a class="btn btn-outline-primary btn-sm" [routerLink]="[ '/department-list' ]">Back</a>
+        </div>
+    </form>
+    </div>
+

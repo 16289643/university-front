@@ -1,0 +1,37 @@
+<div class="container">
+<h2>Create Course</h2>
+
+<div class="form-row" *ngIf="showMsg">
+    <div class="alert alert-{{type}} col-md-12" role="alert">
+      {{msg}}
+    </div>
+  </div>
+
+
+<form>
+    <div class="form-row">
+        <div class="col-md-4">
+            <strong><label>ID</label></strong>
+            <input type="number" id="CourseID" name="CourseID" placeholder="Enter the course ID" 
+            class="form-control" [(ngModel)]="course.CourseID">
+        </div>
+        <div class="col-md-4">
+            <strong><label>Title</label></strong>
+            <input type="text" id="Title" name="Title" placeholder="Enter the Title" 
+            class="form-control" [(ngModel)]="course.Title">
+        </div>
+        <div class="col-md-4">
+            <strong><label>Credits</label></strong>
+            <input type="number" id="Credits" name="Credits" placeholder="Enter the Credits" 
+            class="form-control" [(ngModel)]="course.Credits">
+        </div>
+    </div>
+
+    <br>
+    <div class="btn-group" role="group">
+        <button class="btn btn-outline-primary btn-sm" (click)="save()">Save</button>
+        <a class="btn btn-outline-primary btn-sm" [routerLink]="[ '/course-list' ]">Back</a>
+    </div>
+</form>
+</div>
+

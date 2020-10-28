@@ -1,0 +1,43 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+//import { time, timeLog } from 'console';
+//import { timer } from 'rxjs';
+//import { error } from 'console';
+import { Instructor } from 'src/app/domain/instructor';
+import { InstructorService } from 'src/app/service/instructor.service';
+
+@Component({
+  selector: 'app-instructor-save',
+  templateUrl: './instructor-save.component.html',
+  styleUrls: ['./instructor-save.component.css']
+})
+export class InstructorSaveComponent implements OnInit {
+
+  public instructor: Instructor;
+
+  public showMsg: boolean = false;
+  public msg: string;
+  public type: string;
+
+  constructor(public instructorService: InstructorService,
+    private router: Router) { }
+
+  ngOnInit(): void {
+    this.instructor = new Instructor(0, '', '', new Date );
+  }
+
+  public save(){
+    console.log(this.instructor);
+
+    this.instructorService.save(this.instructor).subscribe(data => {
+      this.router.navigate(['/instructor-list']);
+    }, error => {
+      console.log(error);
+      this.showMsg = true;
+      this.msg = 'An error has ocurred in the procedure';
+      this.type = 'danger';
+    }); 
+  }
+
+}
+

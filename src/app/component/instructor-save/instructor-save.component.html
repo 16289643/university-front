@@ -1,0 +1,42 @@
+<div class="container">
+<h2>Create Instructor</h2>
+
+<div class="form-row" *ngIf="showMsg">
+    <div class="alert alert-{{type}} col-md-12" role="alert">
+      {{msg}}
+    </div>
+  </div>
+
+
+<form>
+    <div class="form-row">
+        <div class="col-md-4">
+            <strong><label>ID</label></strong>
+            <input type="number" id="ID" name="ID" placeholder="Enter the student ID" 
+            class="form-control" [(ngModel)]="instructor.ID" />
+        </div>
+        <div class="col-md-4">
+            <strong><label>LastName</label></strong>
+            <input type="text" id="LastName" name="LastName" placeholder="Enter the LastName" 
+            class="form-control" [(ngModel)]="instructor.LastName" />
+        </div>
+        <div class="col-md-4">
+            <strong><label>FirstMidName</label></strong>
+            <input type="text" id="FirstMidName" name="FirstMidName" placeholder="Enter the FirstMidName" 
+            class="form-control" [(ngModel)]="instructor.FirstMidName" />
+        </div>    
+    <div class="col-md-4">
+        <strong><label>HireDate</label></strong>
+        <input type="date" id="HireDate" name="HireDate" placeholder="Enter the HireDate" 
+        class="form-control" [(ngModel)]="instructor.HireDate" />
+    </div>
+</div>
+
+    <br>
+    <div class="btn-group" role="group">
+        <button class="btn btn-outline-primary btn-sm" (click)="save()">Save</button>
+        <a class="btn btn-outline-primary btn-sm" [routerLink]="[ '/instructor-list' ]">Back</a>
+    </div>
+</form>
+</div>
+
